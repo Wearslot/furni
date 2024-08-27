@@ -1,0 +1,28 @@
+{
+    "preset": {
+        "newsletter_popup": {
+            "image": {
+                "type": "image",
+                "value": "https://res.cloudinary.com/daisikwbm/image/upload/v1717351113/pexels-tubarones-2764975_d7bn3w.jpg"
+            },
+            "title": {
+                "type": "text",
+                "value": "Subscribe to newsletter"
+            },
+            "description": {
+                "type": "text",
+                "value": "get 15% off"
+            } 
+        },
+        "footer": {
+            "text_color": {
+                "type": "color",
+                "value": ""
+            },
+            "background_color": {
+                "type": "color",
+                "value": ""
+            }
+        }
+    }
+}

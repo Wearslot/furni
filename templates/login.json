@@ -1,0 +1,11 @@
+{
+    "layout": "main",
+    "sections": {
+        "main-page": {
+            "type": "login"
+        }
+    },
+    "order": [
+      "main-page"
+    ]
+}

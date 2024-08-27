@@ -1,0 +1,27 @@
+{
+    "sections": {
+        "announcement": {
+            "type": "announcement",
+            "settings": {
+                "show": false
+            }
+        },
+        "header": {
+            "type": "header",
+            "widgets": {
+                "banner": {
+                    "type": "paragraph",
+                    "settings": {
+                        "text": "Hello How are you doing today"
+                    }
+
+                }
+            },
+            "settings": {}
+        }
+    },
+    "order": [
+        "announcement",
+        "header"
+    ]
+}

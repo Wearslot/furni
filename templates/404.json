@@ -1,0 +1,11 @@
+{
+    "layout": "catalogs",
+    "sections": {
+        "page-404": {
+            "type": "main-404"
+        }
+    },
+    "order": [
+        "page-404"
+    ]
+}

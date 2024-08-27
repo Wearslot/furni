@@ -1,0 +1,12 @@
+{
+    "layout": "",
+    "sections": {
+        "order-placed": {
+            "type": "checkout-completed",
+            "settings": {}
+        }
+    },
+    "order": [
+        "order-placed"
+    ]
+}

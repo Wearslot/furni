@@ -1,0 +1,20 @@
+{
+    "layout": "catalogs",
+    "sections": {
+        "details": {
+            "type": "product/main-details",
+            "settings": {}
+        },
+        "similar_products": {
+            "type": "product/similar-products",
+            "settings": {
+                "title": "Related Products",
+                "description": ""
+            }
+        }
+    },
+    "order": [
+        "details",
+        "similar_products"
+    ]
+}

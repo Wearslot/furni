@@ -1,0 +1,81 @@
+{
+    "layout": "main",
+    "sections": {
+        "hero": {
+            "type": "home-hero",
+            "widgets": {
+                "heading": {
+                    "type": "heading",
+                    "tag": "h2",
+                    "settings": {
+                        "text": "How are your doing today?"
+                    }
+                },
+                "navigation": {
+                    "type": "navigation",
+                    "handle": "header_menu",
+                    "settings": {}
+                }
+            }
+        },
+        "featured-products": {
+            "type": "featured-products",
+            "settings": {
+                "padding_top": 10,
+                "title": "Best selling products",
+                "subtitle": "CUSTOMER FAVORITES",
+                "description": ""
+            }
+        },
+        "why-choose-us": {
+            "type": "home-about",
+            "settings": {
+                "padding_top": 10,
+                "title": "Best selling products",
+                "subtitle": "CUSTOMER FAVORITES",
+                "description": ""
+            }
+        },
+        "our-services": {
+            "type": "home-services",
+            "settings": {
+                "padding_top": 10,
+                "title": "Best selling products",
+                "subtitle": "CUSTOMER FAVORITES",
+                "description": ""
+            }
+        },
+        "featured-collections": {
+            "type": "featured-collections",
+            "settings": {
+                "title": "Simple elegance",
+                "subtitle": "SUMMER COLLECTION",
+                "description": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta."
+            }
+        },
+        "lastest-blog-posts": {
+            "type": "lastest-blog-posts",
+            "settings": {
+                "title": "Simple elegance",
+                "subtitle": "SUMMER COLLECTION",
+                "description": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta."
+            }
+        }
+    },
+    "order": [
+        "hero",
+        "featured-products",
+        "why-choose-us",
+        "our-services",
+        "featured-collections"
+    ],
+    "data": {
+        "products": {
+            "pagination": {
+                "per_page": 10
+            }
+        },
+        "featured_products": true,
+        "featured_collections": true
+    }
+}

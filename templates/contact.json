@@ -1,0 +1,43 @@
+{
+    "layout": "main",
+    "sections": {
+        "contact-header": {
+            "type": "contact-header",
+            "settings": {
+                "background": {
+                    "type": "image",
+                    "default": ""
+                },
+                "heading": {
+                    "type": "text",
+                    "default": "store.name"
+                },
+                "subheading": {
+                    "type": "text",
+                    "default": "Contact Us"
+                }
+            }
+        },
+        "contact-details": {
+            "type": "contact-details",
+            "settings": {
+                "heading": {
+                    "type": "text",
+                    "default": "BEST OFFER"
+                },
+                "sub_heading": {
+                    "type": "text",
+                    "default": "Contact information"
+                },
+                "description": {
+                    "type": "textarea",
+                    "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget efficitur quam. Cras pharetra eros mi."
+                }
+            }
+        }
+    },
+    "order": [
+        "contact-header",
+        "contact-details"
+    ]
+}

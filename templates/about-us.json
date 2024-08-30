@@ -2,7 +2,7 @@
     "layout": "main",
     "sections": {
         "main-page": {
-            "type": "page"
+            "type": "about-us"
         }
     },
     "order": [

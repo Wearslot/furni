@@ -1,0 +1,160 @@
+<script type="application/json">
+  {{json product.variation_options}}
+</script>
+<div class="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-5">
+        <div class="intro-excerpt">
+          <h1>{{product.name}}</h1>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <figure class="taojaa-product-gallery__wrapper">
+      <div data-thumb="{{product.image.main}}" data-thumb-alt="g" class="taojaa-product-gallery__image">
+          <a href="{{product.image.main}}">
+              <img src="{{product.image.main}}" class="img-fluid" alt="g"
+                  title="grouped-img-5" data-src="{{product.image.main}}"  decoding="async" loading="lazy" product-data="image"
+                   />
+          </a>
+      </div>
+      <div class="qodef-woo-thumbnails-wrapper">
+          {{#iterate product.image.gallery}}
+          <div data-thumb="{{current}}" class="taojaa-product-gallery__image">
+              <a href="{{current}}">
+                  <img width="200" height="200" src="{{current}}"
+                      class="attachment-taojaa_single size-taojaa_single img-fluid" alt="t"
+                      title="grouped-shop-img-9" data-src="{{current}}"  decoding="async" loading="lazy"
+                       />
+              </a>
+          </div>
+          {{/iterate}}
+      </div>
+  </figure>
+      
+  </div>
+  <div class="col-12 col-md-6">
+    <div class="summary entry-summary">
+        <h1 class="my-3 fw-bold">{{product.name}}</h1>
+        <p class="price">
+            <span class="taojaa-Price-amount amount">
+                <bdi><span class="taojaa-Price-currencySymbol" product-data="price">{{{product_price product}}}</span></bdi>
+            </span>
+        </p>
+        <div class="product_meta">
+            {{#ifCond product.inventory.sku '!=' null}}
+            <span class="sku_wrapper">
+                <span class="qodef-woo-meta-label">SKU:</span>
+                <span class="sku qodef-woo-meta-value" product-data="sku">{{product.inventory.sku}}</span>
+            </span>
+            {{/ifCond}}
+
+            {{#ifCond product.collection '!=' null}}
+            <span class="posted_in">
+                <span class="">Category:</span>
+                <span class="">
+                    <a href="/collections/{{product.collection.slug}}" rel="tag">{{product.collection.name}}
+                    </a>
+                </span>
+            </span>
+            {{/ifCond}}
+            {{#ifCond product.tags.length '>' 0}}
+            <span class="tagged_as">
+                <span class="">Tags:</span>
+                <span class="">
+                    {{#iterate product.tags}}
+                    <a href="/product-tag/{{current}}" rel="tag">{{current}}</a>
+                    {{/iterate}}
+                </span>
+            </span>
+            {{/ifCond}}
+        </div>
+        <product-form>
+            {{#form 'product' product=product}}
+            <table class="variations" cellspacing="0" role="presentation">
+                <tbody>
+                    {{#variations product}}
+                    <tr>
+                        <th class="label"><label for="{{type.name}}">{{type.name}}</label></th>
+                        <td class="value">
+                            <variant-field>
+                                <select id="{{type.name}}" variant="{{type.name}}" name="{{type.name}}"
+                                    data-show_option_none="yes">
+                                    <option value>Choose an option</option>
+                                    {{#variantOptions this}}
+                                    <option value="{{name}}" {{#includes product.default_or_selected_options
+                                        name}} selected="true" {{/includes}}>
+                                        {{name}}
+                                    </option>
+                                    {{/variantOptions}}
+                                </select>
+                            </variant-field>
+                        </td>
+                    </tr>
+                    {{/variations}}
+                </tbody>
+            </table>
+            <div class="error d-none">
+                <p class="error-message"></p>
+            </div>
+            <div class="single_variation_wrap">
+                <div class="taojaa-variation-add-to-cart variations_button">
+                    <quantity-field>
+                        <div class="qodef-quantity-buttons quantity">
+                            <label class="screen-reader-text" for="quantity_6613cfb50d401">
+                                {{product.name}} quantity
+                            </label>
+                            <span class="qodef-quantity-minus minus"></span>
+                            <input type="text" id="product__quantity_{{item.id}}" product-data="quantity"
+                                class="input-text qty text qodef-quantity-input" data-step="1" data-min="1"
+                                data-max="{{product.default_or_selected_variant.quantity}}" name="quantity"
+                                value="1" title="Qty" inputmode="numeric" />
+                            <span class="qodef-quantity-plus plus"></span>
+                        </div>
+                    </quantity-field>
+                    {{#ifCond product.default_or_selected_variant.in_stock '!=' true}}
+                    <button type="submit" class="btn btn-primary-hover-outline disabled mt-3" disabled="true">
+                        {{else}}
+                        <button type="submit" class="btn btn-primary-hover-outline mt-3">
+                            {{/ifCond}}
+
+                            <span class="button_text">
+                                {{#ifCond product.default_or_selected_variant.in_stock '!=' true}}
+                                Out of Stock
+                                {{else}}
+                                Add to cart
+                                {{/ifCond}}
+                            </span>
+                            {{{component "loader"}}}
+                        </button>
+                        <input type="hidden" name="variant_id" class="variant_id" product-data="variant_id"
+                            value="{{product.default_or_selected_variant_id}}" />
+                </div>
+            </div>
+            {{/form}}
+        </product-form>
+        <div class="mt-5 mx-2">
+          <h2>Description</h2>
+          <p>{{{product.inventory.description}}}</p>
+        </div>
+
+
+    </div>
+   
+
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript" src="{{asset_url}}/js/quantity-field.js"></script>
+<script type="text/javascript" src="{{asset_url}}/js/product-form.js"></script>
+<script type="text/javascript" src="{{asset_url}}/js/variant-field.js"></script>

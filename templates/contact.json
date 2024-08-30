@@ -2,7 +2,7 @@
     "layout": "main",
     "sections": {
         "contact-header": {
-            "type": "contact-header",
+            "type": "contact/contact-header",
             "settings": {
                 "background": {
                     "type": "image",
@@ -19,7 +19,7 @@
             }
         },
         "contact-details": {
-            "type": "contact-details",
+            "type": "contact/contact-details",
             "settings": {
                 "heading": {
                     "type": "text",

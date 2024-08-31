@@ -6,9 +6,16 @@
             "widgets": {
                 "heading": {
                     "type": "heading",
-                    "tag": "h2",
+                    "tag": "h1",
                     "settings": {
-                        "text": "How are your doing today?"
+                        "text": "Furniture that lasts forever"
+                    }
+                },
+                "heading-paragraph": {
+                    "type": "heading-paragraph",
+                    "tag": "p",
+                    "settings": {
+                        "text": "This is funiture you must have..."
                     }
                 },
                 "navigation": {
@@ -25,6 +32,22 @@
                 "title": "Best selling products",
                 "subtitle": "CUSTOMER FAVORITES",
                 "description": ""
+            },
+            "widgets": {
+               "product-tag": {
+                  "type": "product-tag",
+                  "tag": "h3",
+                  "settings": {
+                    "text": "NEW ARRIVALS"
+                  }
+                },
+                "product-description": {
+                  "type": "product-description",
+                  "tag": "p",
+                  "settings": {
+                    "text": "Buy amazing products"
+                  }
+                }
             }
         },
         "why-choose-us": {
@@ -34,6 +57,22 @@
                 "title": "Best selling products",
                 "subtitle": "CUSTOMER FAVORITES",
                 "description": ""
+            },
+             "widgets": {
+               "why-choose-us": {
+                  "type": "why-choose-us",
+                  "tag": "h3",
+                  "settings": {
+                    "text": "Why choose our products?"
+                  }
+                },
+                "why-description": {
+                  "type": "why-description",
+                  "tag": "p",
+                  "settings": {
+                    "text": "Buy amazing products... Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique"
+                  }
+                }
             }
         },
         "our-services": {

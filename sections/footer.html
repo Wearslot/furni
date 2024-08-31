@@ -33,9 +33,12 @@
         <div class="row g-5 mb-5">
             <div class="col-lg-4">
                 <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
-                <p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus
-                    malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
-                    Pellentesque habitant</p>
+               {{#widgets section.widgets}}
+    {{#ifCond widget.type '==' 'footer'}}
+        <{{widget.tag}}>{{widget.settings.text}}</{{widget.tag}}>
+    {{/ifCond}}
+    
+{{/widgets}}
 
                 <ul class="list-unstyled custom-social">
                     <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
@@ -48,21 +51,38 @@
             <div class="col-lg-8">
                 <div class="row links-wrap">
                     <div class="col-6 col-sm-6 col-md-3">
-                        <ul class="list-unstyled">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact us</a></li>
-                        </ul>
+                               {{#widgets section.widgets}}
+    {{#ifCond widget.type '==' 'footer-links'}}
+    <ul class="list-unstyled">
+      {{#iterate widget.settings.links limit=4}}
+      <li>
+         <{{current.tag}} href="{{current.url}}">{{current.label}}</{{current.tag}}>
+      </li>
+      {{/iterate}}
+    </ul>
+       
+    {{/ifCond}}
+{{/widgets}}
+                        
                     </div>
 
-                    <div class="col-6 col-sm-6 col-md-3">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">Knowledge base</a></li>
-                            <li><a href="#">Live chat</a></li>
-                        </ul>
-                    </div>
+                    <!-- <div class="col-6 col-sm-6 col-md-3">
+                    {{#widgets section.widgets}}
+                      {{#ifCond widget.type '==' 'footer-links'}}
+                      {{#ifCond widget.settings.links.index '>' '4'}}
+                      <ul class="list-unstyled">
+                        {{#iterate widget.settings.links limit=3}}
+                        <li>
+                          <{{current.tag}} href="{{curent.url}}">{{current.label}}</{{current.tag}}>
+                        </li>
+                        {{/iterate}}
+                        <p>Hello</p>
+                      </ul>
+                        
+                      {{/ifCond}}
+                      {{/ifCond}}
+                  {{/widgets}}
+                    </div> -->
 
                     <div class="col-6 col-sm-6 col-md-3">
                         <ul class="list-unstyled">

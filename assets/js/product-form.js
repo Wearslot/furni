@@ -8,7 +8,7 @@ if (!customElements.get('product-form')) {
             this.submitButton = this.querySelector('[type="submit"]');
 
             this.error = this.querySelector('.error');
-            this.cart = document.querySelector("cart-summary") || document.querySelector('cart-notification');
+            this.cart = document.querySelector("cart-summary") || document.querySelector('cart-notification') || document.querySelector('cart-count');
         }
 
         onSubmit(event) {

@@ -20,13 +20,23 @@
 
 <body>
 
+  <div class="container-fluid">
     {{{sections "header-group"}}}
-
+  
+    
     {{{content}}}
+    
+    {{{render "newsletter-popup"}}}
+  
+    
+  </div>
+  
+  {{{sections "footer-group"}}}
 
-    {{{sections "footer-group"}}}
 
     <script src="{{asset_url}}/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="{{asset_url}}/js/newsletter-modal.js"></script>
+    <script type="text/javascript" src="{{asset_url}}/js/global.js"></script>
     <script src="{{asset_url}}/js/tiny-slider.js"></script>
     <script src="{{asset_url}}/js/custom.js"></script>
 </body>

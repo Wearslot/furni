@@ -1,0 +1,45 @@
+
+<newletter-modal>
+  <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: block" aria-modal="true" role="dialog">
+    <div class="modal-dialog"></div>
+      <div class="modal-content w-50 mx-auto bg-dark text-white ">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{ settings.newsletter_popup.title.value }}</h1>
+          <button type="button" class="btn-close news-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <img src="{{ settings.newsletter_popup.image.value }}" alt="newletter-modal" class="img-fluid"/>
+            </div>
+            <div class="col-sm-12 col-lg-7">
+              <div class="my-5">
+                <p class="text-center text-uppercase ">{{ settings.newsletter_popup.description.value }}</p>
+                {{#form 'newsletter' ' data-status="init"'}}
+                <span class="px-4 my-2" data-name="your-email">
+                    <input type="email" name="email" value size="40" id="email"
+                    aria-required="true" aria-invalid="false" placeholder="Your e-mail" />
+                  </span>
+                  <div class="w-full text-center mt-3">
+                    <button type="submit" id="signupButton" class="btn">
+                        Send
+                        {{{component "loader"}}}
+                    </button>
+                  </div>
+                {{/form}}
+
+                <div class="m-2">
+                  <p>
+                    {{ settings.newsletter_popup.modal_footer.value }}
+                  </p>
+                </div>
+
+              </div>
+              <p class="hidden mt-4 border border-primary p-3 " id="email_feedback" ></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</newletter-modal>
+

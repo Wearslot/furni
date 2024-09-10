@@ -1,0 +1,30 @@
+<cart-summary>
+  <div id="cart-summary" >
+    <div class="cart-summary-inner {{#ifCond cart.items.length '==' 0}} d-none {{/ifCond}}">
+      <ul class="qodef-woo-mini-cart cart-summary-list">
+        {{#iterate cart.items}}
+          <div class="row border-bottom border-secondary ">
+            <div class="col-md-3">
+              <img src="{{current.image}}" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h5 class="text-black">{{current.title}}
+                {{current.selected_options_title}}
+              </h5>
+              <span class="mr-2">Quantity: {{current.quantity}}</span>
+              {{{component 'cart-item-subtotal' item=current }}}
+            </div>
+          </div>
+        {{/iterate}}
+      </ul>
+    </div>
+    <p class="qodef-m-posts-not-found cart-empty {{#ifCond cart.items.length '>' 0}} d-none {{/ifCond}}">
+      No products in the cart.
+    </p>
+  </div>
+
+
+   
+</cart-summary>
+
+<script type="text/javascript" src="{{asset_url}}/js/cart-summary.js"></script>

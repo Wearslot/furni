@@ -7,9 +7,6 @@
           <h1>Cart</h1>
         </div>
       </div>
-      <div class="col-lg-7">
-        
-      </div>
     </div>
   </div>
 </div>
@@ -31,78 +28,68 @@
                 </button>
               </p>
           </div>
-              <table class="table {{#ifCond cart.items_count '===' 0}} d-none {{/ifCond}}">
-                <thead>
-                  <tr>
-                    <th class="product-thumbnail">Image</th>
-                    <th class="product-name">Product</th>
-                    <th class="product-price">Price</th>
-                    <th class="product-quantity">Quantity</th>
-                    <th class="product-total">Total</th>
-                    <th class="product-remove">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{#iterate cart.items}}
-                  <tr>
-                    <td class="product-thumbnail">
-                      <img src="{{current.image}}" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">{{current.title}} –
-                        {{current.selected_options_title}}</h2>
-                    </td>
-                    <td> <bdi>
-                      <span class="taojaa-Price-currencySymbol">{{{currency.symbol}}}</span>{{current.sale_price}}
-                  </bdi></td>
-                    <td>
-                      <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                        </div>
-                        <input type="text" id="cart-item__quantity_{{current.id}}"
-                                data-line="{{add current.index 1}}"
-                                class="input-text qty text qodef-quantity-input cart-item__quantity"
-                                data-step="{{current.default_or_selected_variant.quantity_rule.step}}"
-                                data-min="{{current.default_or_selected_variant.quantity_rule.min}}"
-                                data-max="{{current.default_or_selected_variant.quantity_rule.max}}" name="quantity[]"
-                                value="{{current.quantity}}" title="Qty" placeholder="" inputmode="numeric">
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                        </div>
+          <cart-items>
+            <table class="table cart taojaa-cart-form__contents {{#ifCond cart.items_count '===' 0}} d-none {{/ifCond}}">
+              <thead>
+                <tr>
+                  <th class="product-thumbnail">Image</th>
+                  <th class="product-name">Product</th>
+                  <th class="product-price">Price</th>
+                  <th class="product-quantity">Quantity</th>
+                  <th class="product-total">Total</th>
+                  <th class="product-remove">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#iterate cart.items}}
+                <tr class="taojaa-cart-form__cart-item cart_item">
+                  <td class="product-thumbnail">
+                    <img src="{{current.image}}" alt="Image" class="img-fluid">
+                  </td>
+                  <td class="product-name">
+                    <h2 class="h5 text-black">{{current.title}}
+                      {{current.selected_options_title}}</h2>
+                  </td>
+                  <td> <bdi>
+                    <span class="taojaa-Price-currencySymbol">{{{currency.symbol}}}</span>{{current.sale_price}}
+                </bdi></td>
+                  <td class="product-quantity" data-title="Quantity">
+                    <quantity-field>
+                      <div class="quantity">
+                          <span class="minus ">
+                            <span class=" fw-bold"> - </span>
+                          </span>
+                          <input type="text" id="product__quantity_{{item.id}}" product-data="quantity"
+                          data-line="{{add current.index 1}}"
+                              class="input-text qty text w-50 text-center cart-item__quantity" data-step="{{current.default_or_selected_variant.quantity_rule.step}}" data-min="{{current.default_or_selected_variant.quantity_rule.min}}"
+                              data-max="{{current.default_or_selected_variant.quantity_rule.max}}" name="quantity[]"
+                              value="{{current.quantity}}" title="Qty" inputmode="numeric" />
+                          <span class="plus">
+                            <span class=" fw-bold"> + </span>
+                          </span>
                       </div>
-  
-                    </td>
-                    <td>$49.00</td>
-                    <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                  </tr>
-  
-                  <tr>
-                    <td class="product-thumbnail">
-                      <img src="images/product-2.png" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">Product 2</h2>
-                    </td>
-                    <td>$49.00</td>
-                    <td>
-                      <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                        </div>
-                        <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                        </div>
-                      </div>
-  
-                    </td>
-                    <td>$49.00</td>
-                    <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                  </tr>
-                  {{/iterate}}
-                </tbody>
-              </table>
+                  </quantity-field>
+
+                  </td>
+                  <td class="product-subtotal" data-title="Subtotal">
+                  {{{component "loader"}}}
+                  <span class="taojaa-Price-amount amount" id="cart-item__subtotal-{{add current.index 1}}">
+                    {{{component 'cart-item-subtotal' item=current }}}
+                  </span>
+              </td>
+                  <td class="product-remove">
+                    <cart-remove-button>
+                        <a href="/cart/update?line={{add current.index 1}}&quantity=0"
+                            data-line="{{add current.index 1}}" class="remove cart-remove-btn text-danger fw-bold fs-5"
+                            aria-label="Remove current item">×</a>
+                    </cart-remove-button>
+              </td>
+                </tr>
+
+                {{/iterate}}
+              </tbody>
+            </table>
+          </cart-items>
             </div>
           </form>
         </div>
@@ -110,54 +97,124 @@
         <div class="row {{#ifCond cart.items_count '===' 0}} d-none {{/ifCond}}">
           <div class="col-md-6">
             <div class="row mb-5">
-              <div class="col-md-6 mb-3 mb-md-0">
-                <button class="btn btn-black btn-sm btn-block">Update Cart</button>
-              </div>
               <div class="col-md-6">
                 <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <label class="text-black h4" for="coupon">Coupon</label>
-                <p>Enter your coupon code if you have one.</p>
-              </div>
-              <div class="col-md-8 mb-3 mb-md-0">
-                <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-black">Apply Coupon</button>
-              </div>
-            </div>
+         
           </div>
+
           <div class="col-md-6 pl-5">
             <div class="row justify-content-end">
               <div class="col-md-7">
-                <div class="row">
-                  <div class="col-md-12 text-right border-bottom mb-5">
-                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                  </div>
+              <div class="cart-collaterals">
+                <div class="cart_totals calculated_shipping">
+                    <h2>Cart totals</h2>
+
+                    <table cellspacing="2" class="shop_table shop_table_responsive">
+                        <tbody>
+                            <tr class="cart-subtotal">
+                                <th>Subtotal</th>
+                                <td data-title="Subtotal">
+                                    <span class="taojaa-Price-amount amount cart-subtotal-amount">
+                                        {{{component "cart-subtotal-amount"}}}
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr class="cart-subtotal discount">
+                                <th>Discount</th>
+                                <td data-title="Subtotal">
+                                    <span class="taojaa-Price-amount amount cart-discount-amount">
+                                        {{{component "cart-discount-amount"}}}
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr class="taojaa-shipping-totals shipping">
+                                <th>Shipping</th>
+                                <!-- <td data-title="Shipping">
+                                    <p>Calculate Shipping Fee</p> 
+                                    {{#form "shipping" 'class="taojaa-shipping-calculator"'}}
+                                    <a href="#" class="shipping-calculator-button"><strong>Enter address</strong></a>
+                                    <section class="shipping-calculator-form d-none">
+
+                                        
+                                        <p class="form-row form-row-wide"
+                                            id="calc_shipping_country_field">
+                                            <label for="calc_shipping_country"
+                                                class="screen-reader-text">Country /
+                                                region:</label>
+                                            {{{ country_select_field id="calc_shipping_country"
+                                            class="country_to_state country_select"
+                                            name="calc_shipping_country" }}}
+
+                                        </p>
+
+                                        <p class="form-row form-row-wide"
+                                            id="calc_shipping_state_field">
+                                            <span>
+                                                <label for="calc_shipping_state"
+                                                    class="screen-reader-text">State /
+                                                    County:</label>
+                                                {{{ state_select_field id="calc_shipping_state"
+                                                class="state_select" name="calc_shipping_state" }}}
+                                            </span>
+                                        </p>
+
+                                        <p class="form-row form-row-wide"
+                                            id="calc_shipping_city_field">
+                                            <label for="calc_shipping_city"
+                                                class="screen-reader-text">City:</label>
+                                            <input type="text" class="input-text" value=""
+                                                placeholder="City" name="calc_shipping_city"
+                                                id="calc_shipping_city">
+                                        </p>
+
+                                        <p class="form-row form-row-wide"
+                                            id="calc_shipping_postcode_field">
+                                            <label for="calc_shipping_postcode"
+                                                class="screen-reader-text">Postcode /
+                                                ZIP:</label>
+                                            <input type="text" class="input-text" value=""
+                                                placeholder="Postcode / ZIP"
+                                                name="calc_shipping_postcode"
+                                                id="calc_shipping_postcode">
+                                        </p>
+
+                                        <p><button type="submit" name="calc_shipping" value="1"
+                                                class="button">Update</button></p>
+                                        <input type="hidden" id="taojaa-shipping-calculator-nonce"
+                                            name="taojaa-shipping-calculator-nonce"
+                                            value="f5cc86ed2a"><input type="hidden"
+                                            name="_wp_http_referer" value="/cart/">
+                                    </section>
+                                    {{/form}}
+
+                                </td> -->
+                            </tr>
+
+                            <tr class="order-total">
+                                <th>Total</th>
+                                <td data-title="Total">
+                                    <strong>
+                                        <span class="taojaa-Price-amount amount cart-total-amount">
+                                            {{{component "cart-total-amount"}}}
+                                        </span>
+                                    </strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <span class="text-black">Subtotal</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
-                  </div>
-                </div>
-                <div class="row mb-5">
-                  <div class="col-md-6">
-                    <span class="text-black">Total</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
-                  </div>
-                </div>
+              </div>
   
-                <div class="row">
+                <div class="row mt-3">
                   <div class="col-md-12">
-                    <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
+                    <button class="checkout-button btn btn-black btn-lg py-3 alt"><a href="/checkout" class="wc-forward text-white text-decoration-none">
+                      Proceed to checkout
+                  </a></button>
                   </div>
                 </div>
               </div>
@@ -166,3 +223,7 @@
         </div>
       </div>
     </div>
+
+<script type="text/javascript" src="{{asset_url}}/js/cart.js"></script>
+<script type="text/javascript" src="{{asset_url}}/js/quantity-field.js"></script>
+<script type="text/javascript" src="{{asset_url}}/js/discount.js"></script>

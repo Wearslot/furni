@@ -15,35 +15,33 @@
     </div>
   </div>
 </div>
-<div class="row mt-5">
+
+<div class="row my-5 mx-4">
   <div class="col-sm-12 col-md-6 col-lg-6">
-    <figure class="taojaa-product-gallery__wrapper">
-      <div data-thumb="{{product.image.main}}" data-thumb-alt="g" class="taojaa-product-gallery__image">
-          <a href="{{product.image.main}}">
-              <img src="{{product.image.main}}" class="img-fluid" alt="g"
-                  title="grouped-img-5" data-src="{{product.image.main}}"  decoding="async" loading="lazy" product-data="image"
-                   />
-          </a>
-      </div>
-      <div class="qodef-woo-thumbnails-wrapper">
-          {{#iterate product.image.gallery}}
-          <div data-thumb="{{current}}" class="taojaa-product-gallery__image">
-              <a href="{{current}}">
-                  <img width="200" height="200" src="{{current}}"
-                      class="attachment-taojaa_single size-taojaa_single img-fluid" alt="t"
-                      title="grouped-shop-img-9" data-src="{{current}}"  decoding="async" loading="lazy"
-                       />
-              </a>
-          </div>
-          {{/iterate}}
-      </div>
-  </figure>
+    <div data-thumb="{{product.image.main}}" data-thumb-alt="g" class="">
+        <a href="{{product.image.main}}">
+            <img src="{{product.image.main}}" class="img-fluid" alt="g"
+                title="grouped-img-5" data-src="{{product.image.main}}"  decoding="async" loading="lazy" product-data="image"/>
+        </a>
+    </div>
+    <div class="">
+        {{#iterate product.image.gallery}}
+        <div data-thumb="{{current}}" class="taojaa-product-gallery__image">
+            <a href="{{current}}">
+                <img width="200" height="200" src="{{current}}"
+                    class="attachment-taojaa_single size-taojaa_single img-fluid" alt="t"
+                    title="grouped-shop-img-9" data-src="{{current}}"  decoding="async" loading="lazy"
+                     />
+            </a>
+        </div>
+        {{/iterate}}
+    </div>
       
   </div>
   <div class="col-12 col-md-6">
     <div class="summary entry-summary">
-        <h1 class="my-3 fw-bold">{{product.name}}</h1>
-        <p class="price">
+        <h1 class="my-3 fw-bold entry-title">{{product.name}}</h1>
+        <p class="price fw-bold">
             <span class="taojaa-Price-amount amount">
                 <bdi><span class="taojaa-Price-currencySymbol" product-data="price">{{{product_price product}}}</span></bdi>
             </span>
@@ -51,8 +49,8 @@
         <div class="product_meta">
             {{#ifCond product.inventory.sku '!=' null}}
             <span class="sku_wrapper">
-                <span class="qodef-woo-meta-label">SKU:</span>
-                <span class="sku qodef-woo-meta-value" product-data="sku">{{product.inventory.sku}}</span>
+                <span class="">SKU:</span>
+                <span class="" product-data="sku">{{product.inventory.sku}}</span>
             </span>
             {{/ifCond}}
 
@@ -77,7 +75,7 @@
             {{/ifCond}}
         </div>
         <product-form>
-            {{#form 'product' product=product}}
+            {{#form 'product' 'class="variations_form cart"' product=product}}
             <table class="variations" cellspacing="0" role="presentation">
                 <tbody>
                     {{#variations product}}
@@ -107,22 +105,26 @@
             <div class="single_variation_wrap">
                 <div class="taojaa-variation-add-to-cart variations_button">
                     <quantity-field>
-                        <div class="qodef-quantity-buttons quantity">
-                            <label class="screen-reader-text" for="quantity_6613cfb50d401">
-                                {{product.name}} quantity
+                        <div class="quantity w-50">
+                            <label class="screen-reader-text d-block" for="quantity_6613cfb50d401">
+                                {{product.name}} quantity:
                             </label>
-                            <span class="qodef-quantity-minus minus"></span>
+                            <span class="minus ">
+                              <button type="button" class=" fw-bold"> - </button>
+                            </span>
                             <input type="text" id="product__quantity_{{item.id}}" product-data="quantity"
-                                class="input-text qty text qodef-quantity-input" data-step="1" data-min="1"
+                                class="input-text qty text w-25 text-center" data-step="1" data-min="1"
                                 data-max="{{product.default_or_selected_variant.quantity}}" name="quantity"
                                 value="1" title="Qty" inputmode="numeric" />
-                            <span class="qodef-quantity-plus plus"></span>
+                            <span class="plus">
+                              <button type="button" class=" fw-bold"> + </button>
+                            </span>
                         </div>
                     </quantity-field>
                     {{#ifCond product.default_or_selected_variant.in_stock '!=' true}}
-                    <button type="submit" class="btn btn-primary-hover-outline disabled mt-3" disabled="true">
+                    <button type="submit" class="single_add_to_cart_button alt btn btn-primary-hover-outline disabled mt-3" disabled="true">
                         {{else}}
-                        <button type="submit" class="btn btn-primary-hover-outline mt-3">
+                        <button type="submit" class="btn btn-primary-hover-outline mt-3 single_add_to_cart_button button alt">
                             {{/ifCond}}
 
                             <span class="button_text">
@@ -149,6 +151,33 @@
     </div>
    
 
+    </div>
+  </div>
+</div>
+
+<div class="accordion w-75 mx-auto mt-3 mb-5" id="productDetails">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Leave a review!
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#productDetails">
+      <div class="accordion-body">
+        {{{render "product/review-form"}}}
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        See Reviews
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#productDetails">
+      <div class="accordion-body">
+        {{{render "product/reviews"}}}
+      </div>
     </div>
   </div>
 </div>

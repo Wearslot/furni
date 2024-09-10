@@ -131,6 +131,22 @@ a {
 	}
 }
 
+.tool-tip {
+  position: relative;
+  .cart-summary-wrapper{
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    display: none;
+    z-index: 100;
+    width: 350px;
+    background-color: #efefef;
+  }
+  &:hover .cart-summary-wrapper {
+    display: block;
+  }
+}
+
 // Hero 
 .hero {
 	background: $primary;
@@ -161,7 +177,7 @@ a {
 	}
 	p {
 		color: rgba($white, .5);
-		margin-botom: 30px;
+		margin-bottom: 30px;
 	}
 	.hero-img-wrap {
 		position: relative;
@@ -432,6 +448,14 @@ a {
 	}
 }	
 
+.comment-form-rating{
+  .stars {
+    .star2 {
+      display: none;
+    }
+  }
+}
+
 .custom-list {
 	width: 100%;
 	li {
@@ -650,6 +674,7 @@ a {
 // Footer Section
 .footer-section {
 	padding: 80px 0;
+  margin-top: 150px;
 	background: $white;
 	.relative {
 		position: relative;
@@ -868,9 +893,6 @@ textarea {
 .couponcode-wrap {
 	input {
 		border-radius: 10px!important;
-	}
-	.btn {
-
 	}
 }
 .text-primary {

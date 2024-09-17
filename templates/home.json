@@ -22,17 +22,18 @@
                     "type": "navigation",
                     "handle": "header_menu",
                     "settings": {}
+                },
+                "hero_image": {
+                  "type": "hero_image",
+                  "tag": "img",
+                  "settings": {
+                    "image": "assets/images/couch.png"
+                  }
                 }
             }
         },
         "featured-products": {
             "type": "featured-products",
-            "settings": {
-                "padding_top": 10,
-                "title": "Best selling products",
-                "subtitle": "CUSTOMER FAVORITES",
-                "description": ""
-            },
             "widgets": {
                "product-tag": {
                   "type": "product-tag",
@@ -52,14 +53,8 @@
         },
         "why-choose-us": {
             "type": "home-about",
-            "settings": {
-                "padding_top": 10,
-                "title": "Best selling products",
-                "subtitle": "CUSTOMER FAVORITES",
-                "description": ""
-            },
-             "widgets": {
-               "why-choose-us": {
+            "widgets": {
+                "why-choose-us": {
                   "type": "why-choose-us",
                   "tag": "h3",
                   "settings": {
@@ -72,24 +67,61 @@
                   "settings": {
                     "text": "Buy amazing products... Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique"
                   }
+                },
+                "why-image": {
+                  "type": "why-image",
+                  "tag": "img",
+                  "settings": {
+                    "image": "assets/images/why-choose-us-img.jpg"
+                  }
                 }
             }
         },
         "our-services": {
             "type": "home-services",
-            "settings": {
-                "padding_top": 10,
-                "title": "Best selling products",
-                "subtitle": "CUSTOMER FAVORITES",
-                "description": ""
+            "widgets": {
+              "our-services-title": {
+                  "type": "our-services-title",
+                  "tag": "h2",
+                  "settings": {
+                    "text": "We Help You Make Modern Interior Design"
+                  }
+                },
+                "our-services-description": {
+                  "type": "our-services-description",
+                  "tag": "p",
+                  "settings": {
+                    "text": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada.Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada"
+                  }
+                },
+                "our-services-image": {
+                  "type": "our-services-image",
+                  "tag": "img",
+                  "settings": {
+                    "image_1": "assets/images/img-grid-1.jpg",
+                    "image_2": "assets/images/img-grid-2.jpg",
+                    "image_3": "assets/images/img-grid-3.jpg"
+                  }
+                }
             }
         },
         "featured-collections": {
             "type": "featured-collections",
-            "settings": {
-                "title": "Simple elegance",
-                "subtitle": "SUMMER COLLECTION",
-                "description": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta."
+            "widgets": {
+              "featured_collections_title": {
+                  "type": "featured_collections_title",
+                  "tag": "h2",
+                  "settings": {
+                    "text": "Explore Featured Collections"
+                  }
+                },
+                "featured_collections_description": {
+                  "type": "featured_collections_description",
+                  "tag": "p",
+                  "settings": {
+                    "text": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique"
+                  }
+                }
             }
         },
         "lastest-blog-posts": {
@@ -104,9 +136,9 @@
     "order": [
         "hero",
         "featured-products",
+        "featured-collections",
         "why-choose-us",
-        "our-services",
-        "featured-collections"
+        "our-services"
     ],
     "data": {
         "products": {

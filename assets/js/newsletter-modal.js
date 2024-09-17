@@ -3,12 +3,12 @@ class NewsletterForm {
       this.formElement = formElement;
       this.close = this.formElement.querySelector('.news-modal-close');
       this.feedback = this.formElement.querySelector('#email_feedback');
-      if (!formElement) {
-        console.error("NewsletterForm: formElement is not valid");
+      this.email = this.formElement.querySelector('#email');
+
+      if (localStorage.getItem('disabledPopup') === 'yes') {
+        this.formElement.classList.add('hidden'); // Hide modal immediately
         return;
       }
-      // this.feedback.classList.add("hidden");
-      this.email = this.formElement.querySelector('#email');
 
       if (this.close) {
           this.close.addEventListener("click", this.disablePopup.bind(this));
@@ -31,10 +31,11 @@ class NewsletterForm {
   handleBeforeUnload(event) {
       const disabledPopupUntil = localStorage.getItem('disabledPopupUntil');
       if (disabledPopupUntil && Date.now() < parseInt(disabledPopupUntil, 10)) {
-          return;
+        this.formElement.classList.add('hidden');
+        return;
       } else {
-          localStorage.removeItem('disabledPopupUntil');
-          localStorage.removeItem('disabledPopup');
+        localStorage.removeItem('disabledPopupUntil');
+        localStorage.removeItem('disabledPopup');
       }
   }
 
@@ -78,14 +79,6 @@ class NewsletterForm {
     signUpButton.disabled = false;
   }
 
-  showModalWithDelay(delay = 3000) {
-      const disabledPopup = localStorage.getItem('disabledPopup');
-      if (!disabledPopup) {
-          setTimeout(() => {
-            this.formElement.classList.remove('hidden'); 
-          }, delay);
-      }
-  }
 }
 
 if (!customElements.get('newletter-modal')) {
@@ -94,13 +87,22 @@ if (!customElements.get('newletter-modal')) {
         super();
       }
       connectedCallback() {
-        const formInstance = new NewsletterForm(this);
-        formInstance.showModalWithDelay(3000); // Delay of 3 seconds
-      }
+        new NewsletterForm(this);
+    }
   });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const footerForm = document.querySelector('[form-id="newsletter_form"]')
-  new NewsletterForm(footerForm);
-})
+  // Check localStorage before creating the modal
+  if (localStorage.getItem('disabledPopup') === 'yes') {
+    return; 
+  }
+
+  const footerForm = document.querySelector('[form-id="newsletter_form"]');
+  
+  if (footerForm) {
+    new NewsletterForm(footerForm);
+  } else {
+    console.error("Newsletter form not found in DOM");
+  }
+});

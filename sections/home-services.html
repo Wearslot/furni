@@ -4,16 +4,38 @@
         <div class="row justify-content-between">
             <div class="col-12 col-lg-7 mb-5 mb-lg-0">
                 <div class="imgs-grid">
-                    <div class="grid grid-1 img-fluid"><img src="{{asset_url}}/images/img-grid-1.jpg" alt="Untree.co"></div>
-                    <div class="grid grid-2 img-fluid"><img src="{{asset_url}}/images/img-grid-2.jpg" alt="Untree.co"></div>
-                    <div class="grid grid-3 img-fluid"><img src="{{asset_url}}/images/img-grid-3.jpg" alt="Untree.co"></div>
+                    <div class="grid grid-1 img-fluid">
+                      {{#widgets section.widgets}}
+                      {{#ifCond widget.type '==' 'our-services-image'}}
+                          <{{widget.tag}} src={{widget.settings.image_1}}>
+                      {{/ifCond}}
+                      {{/widgets}}
+                    </div>
+                    <div class="grid grid-2 img-fluid">
+                      {{#widgets section.widgets}}
+                      {{#ifCond widget.type '==' 'our-services-image'}}
+                          <{{widget.tag}} src={{widget.settings.image_2}}>
+                      {{/ifCond}}
+                      {{/widgets}}
+                    </div>
+                    <div class="grid grid-3 img-fluid">
+                      {{#widgets section.widgets}}
+                      {{#ifCond widget.type '==' 'our-services-image'}}
+                          <{{widget.tag}} src={{widget.settings.image_3}}>
+                      {{/ifCond}}
+                      {{/widgets}}
+                    </div>
                 </div>
             </div>
             <div class="col-lg-5 ps-lg-5">
-                <h2 class="section-title mb-4">We Help You Make Modern Interior Design</h2>
-                <p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada.
-                    Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque
-                    habitant morbi tristique senectus et netus et malesuada</p>
+              {{#widgets section.widgets}}
+              {{#ifCond widget.type '==' 'our-services-title'}}
+                <{{widget.tag}}>{{widget.settings.text}}</{{widget.tag}}>
+              {{/ifCond}}
+              {{#ifCond widget.type '==' 'our-services-description'}}
+                <{{widget.tag}}>{{widget.settings.text}}</{{widget.tag}}>
+              {{/ifCond}}
+              {{/widgets}}
 
                 <ul class="list-unstyled custom-list my-4">
                     <li>Donec vitae odio quis nisl dapibus malesuada</li>

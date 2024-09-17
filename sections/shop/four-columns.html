@@ -1,13 +1,9 @@
 <div class="hero">
   <div class="container">
     <div class="row justify-content-between">
-      <div class="col-lg-5">
-        <div class="intro-excerpt">
-          <h1>Shop</h1>
-        </div>
-      </div>
-      <div class="col-lg-7">
-        
+      <div class="">
+        <h1>{{#ifCond collection '!=' null}} {{collection.name}} {{/ifCond}}</h1>
+        <h1>{{#ifCond collection '==' null}} Shop {{/ifCond}}</h1>
       </div>
     </div>
   </div>

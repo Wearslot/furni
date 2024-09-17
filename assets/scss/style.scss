@@ -131,21 +131,6 @@ a {
 	}
 }
 
-.tool-tip {
-  position: relative;
-  .cart-summary-wrapper{
-    position: absolute;
-    top: 50px;
-    right: 10px;
-    display: none;
-    z-index: 100;
-    width: 350px;
-    background-color: #efefef;
-  }
-  &:hover .cart-summary-wrapper {
-    display: block;
-  }
-}
 
 // Hero 
 .hero {

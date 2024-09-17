@@ -9,6 +9,7 @@ if (!customElements.get('product-form')) {
 
             this.error = this.querySelector('.error');
             this.cart = document.querySelector("cart-summary") || document.querySelector('cart-notification') || document.querySelector('cart-count');
+            console.log(this.cart)
         }
 
         onSubmit(event) {
@@ -22,6 +23,7 @@ if (!customElements.get('product-form')) {
             const formData = new FormData(this.form);
             const url = this.form.getAttribute("action");
 
+            console.log('BEFORE SUCCESSFUL', this.cart.getAffectedComponents())
             const components = this.cart.getAffectedComponents();
             formData.append('components', JSON.stringify(components.map(component => component.id)));
 
@@ -31,12 +33,13 @@ if (!customElements.get('product-form')) {
             fetch(url, config)
                 .then(response => response.json())
                 .then(response => {
-
-                    if (response.status) {
+                  console.log(response)
+                    if (response.status === 'error') {
                         return this.handleError(response.message);
                     }
-
+                    console.log('AFTER SUCCESSFUL', this.cart.getAffectedComponents())
                     this.cart.updateAffectedCoponents(components, response);
+                    
                     this.cart.show();
 
                 }).catch((error) => {

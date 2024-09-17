@@ -8,15 +8,6 @@
         },
         "header": {
             "type": "header",
-            "widgets": {
-                "banner": {
-                    "type": "paragraph",
-                    "settings": {
-                        "text": "Hello How are you doing today"
-                    }
-
-                }
-            },
             "settings": {}
         }
     },

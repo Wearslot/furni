@@ -1,9 +1,9 @@
 <cart-summary>
   <div id="cart-summary" >
     <div class="cart-summary-inner {{#ifCond cart.items.length '==' 0}} d-none {{/ifCond}}">
-      <ul class="qodef-woo-mini-cart cart-summary-list">
+      <ul class="cart-summary-list">
         {{#iterate cart.items}}
-          <div class="row border-bottom border-secondary ">
+          <div class="row">
             <div class="col-md-3">
               <img src="{{current.image}}" alt="Image" class="img-fluid">
             </div>
@@ -18,13 +18,10 @@
         {{/iterate}}
       </ul>
     </div>
-    <p class="qodef-m-posts-not-found cart-empty {{#ifCond cart.items.length '>' 0}} d-none {{/ifCond}}">
+    <p class="cart-empty {{#ifCond cart.items.length '>' 0}} d-none {{/ifCond}}">
       No products in the cart.
     </p>
   </div>
-
-
-   
 </cart-summary>
 
 <script type="text/javascript" src="{{asset_url}}/js/cart-summary.js"></script>

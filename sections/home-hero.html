@@ -19,7 +19,11 @@
       </div>
       <div class="col-lg-6">
           <div class="hero-img-wrap d-none d-lg-block  ">
-              <img src="{{asset_url}}/images/couch.png" class="img-fluid">
+            {{#widgets section.widgets}}
+            {{#ifCond widget.type '==' 'hero_image'}}
+                <{{widget.tag}} src={{widget.settings.image}}>
+            {{/ifCond}}
+            {{/widgets}}
           </div>
       </div>
   </div>

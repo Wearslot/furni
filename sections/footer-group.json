@@ -11,19 +11,14 @@
                         "text": "This is funiture you must have...Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant"
                     }
               },
-              "footer-links": {
-                "type": "footer-links",
+              "footer_image": {
+                "type": "footer_image",
+                "tag": "img",
                 "settings": {
-                  "links": [
-                    { "label": "About Us", "url": "#", "tag":"a" },
-                    { "label": "Contact", "url": "#", "tag":"a" },
-                    { "label": "Terms & Conditions", "url": "#", "tag":"a" },
-                    { "label": "Privacy Policy", "url": "#", "tag":"a" },
-                    { "label": "Shop Now", "url": "/shop", "tag":"a" }
-               
-                  ]
+                "image": "{{asset_url}}/images/sofa.png"
                 }
               }
+              
             }
         }
     },

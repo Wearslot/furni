@@ -1,20 +1,6 @@
 <script type="application/json">
   {{json product.variation_options}}
 </script>
-<div class="hero">
-  <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-lg-5">
-        <div class="intro-excerpt">
-          <h1>{{product.name}}</h1>
-        </div>
-      </div>
-      <div class="col-lg-7">
-        
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="row my-5 mx-4">
   <div class="col-sm-12 col-md-6 col-lg-6">
@@ -105,20 +91,22 @@
             <div class="single_variation_wrap">
                 <div class="taojaa-variation-add-to-cart variations_button">
                     <quantity-field>
-                        <div class="quantity w-50">
+                        <div class="quantity w-50 w-lg-25">
                             <label class="screen-reader-text d-block" for="quantity_6613cfb50d401">
                                 {{product.name}} quantity:
                             </label>
-                            <span class="minus ">
-                              <button type="button" class=" fw-bold"> - </button>
-                            </span>
-                            <input type="text" id="product__quantity_{{item.id}}" product-data="quantity"
-                                class="input-text qty text w-25 text-center" data-step="1" data-min="1"
-                                data-max="{{product.default_or_selected_variant.quantity}}" name="quantity"
-                                value="1" title="Qty" inputmode="numeric" />
-                            <span class="plus">
-                              <button type="button" class=" fw-bold"> + </button>
-                            </span>
+                            <div class="btn-group rounded-pill bg-black">
+                              <span class="minus px-1 px-lg-2">
+                                <button type="button" class="border-0 bg-transparent text-white fw-bold"> - </button>
+                              </span>
+                              <input type="text" id="product__quantity_{{item.id}}" product-data="quantity"
+                                  class="input-text qty w-75 text-center" data-step="1" data-min="1"
+                                  data-max="{{product.default_or_selected_variant.quantity}}" name="quantity"
+                                  value="1" title="Qty" inputmode="numeric" />
+                              <span class="plus px-1">
+                                <button type="button" class="border-0 bg-transparent text-white fw-bold"> + </button>
+                              </span>
+                            </div>
                         </div>
                     </quantity-field>
                     {{#ifCond product.default_or_selected_variant.in_stock '!=' true}}
@@ -151,35 +139,8 @@
     </div>
    
 
-    </div>
   </div>
 </div>
-
-<div class="accordion w-75 mx-auto mt-3 mb-5" id="productDetails">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Leave a review!
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#productDetails">
-      <div class="accordion-body">
-        {{{render "product/review-form"}}}
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        See Reviews
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#productDetails">
-      <div class="accordion-body">
-        {{{render "product/reviews"}}}
-      </div>
-    </div>
-  </div>
 </div>
 
 

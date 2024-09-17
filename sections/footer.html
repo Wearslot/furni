@@ -3,7 +3,11 @@
     <div class="container relative">
 
         <div class="sofa-img">
-            <img src="{{asset_url}}/images/sofa.png" alt="Image" class="img-fluid">
+          {{#widgets section.widgets}}
+          {{#ifCond widget.type '==' 'footer_image'}}
+              <{{widget.tag}} src={{widget.settings.image}}>
+          {{/ifCond}}
+          {{/widgets}}
         </div>
 
         <div class="row">
@@ -51,54 +55,18 @@
             <div class="col-lg-8">
                 <div class="row links-wrap">
                     <div class="col-6 col-sm-6 col-md-3">
-                               {{#widgets section.widgets}}
-    {{#ifCond widget.type '==' 'footer-links'}}
-    <ul class="list-unstyled">
-      {{#iterate widget.settings.links limit=4}}
-      <li>
-         <{{current.tag}} href="{{current.url}}">{{current.label}}</{{current.tag}}>
-      </li>
-      {{/iterate}}
-    </ul>
-       
-    {{/ifCond}}
-{{/widgets}}
-                        
-                    </div>
-
-                    <!-- <div class="col-6 col-sm-6 col-md-3">
-                    {{#widgets section.widgets}}
-                      {{#ifCond widget.type '==' 'footer-links'}}
-                      {{#ifCond widget.settings.links.index '>' '4'}}
+                      {{#ifCond store.navigations.header_menu '!==' undefined}}
                       <ul class="list-unstyled">
-                        {{#iterate widget.settings.links limit=3}}
+                        {{#iterate store.navigations.header_menu}}
                         <li>
-                          <{{current.tag}} href="{{curent.url}}">{{current.label}}</{{current.tag}}>
+                          <a class="nav-link" href="{{current.url}}"><span class="qodef-menu-item-text">{{current.name}}
+                          </span>
+                          </a>
                         </li>
                         {{/iterate}}
-                        <p>Hello</p>
                       </ul>
+                    {{/ifCond}}
                         
-                      {{/ifCond}}
-                      {{/ifCond}}
-                  {{/widgets}}
-                    </div> -->
-
-                    <div class="col-6 col-sm-6 col-md-3">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Jobs</a></li>
-                            <li><a href="#">Our team</a></li>
-                            <li><a href="#">Leadership</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-6 col-sm-6 col-md-3">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Nordic Chair</a></li>
-                            <li><a href="#">Kruzo Aero</a></li>
-                            <li><a href="#">Ergonomic Chair</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>

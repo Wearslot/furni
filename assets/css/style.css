@@ -109,22 +109,6 @@ a.more {
   margin-right: 20px;
 }
 
-.tool-tip {
-  position: relative;
-}
-.tool-tip .cart-summary-wrapper {
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  display: none;
-  z-index: 100;
-  width: 350px;
-  background-color: #efefef;
-}
-.tool-tip:hover .cart-summary-wrapper {
-  display: block;
-}
-
 .hero {
   background: #3b5d50;
   padding: calc(4rem - 30px) 0 0rem 0;

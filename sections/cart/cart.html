@@ -20,91 +20,93 @@
           <form class="col-md-12" method="post">
             <div class="site-blocks-table">
               <div
-              class="{{#ifCond cart.items_count '>' 0}} d-none {{/ifCond}}">
+              class="{{#ifCond cart.items_count '>' 0}} d-none {{/ifCond}} empty-cart">
               <p class="cart-empty taojaa-info">Your cart is currently empty.</p>
               <p class="return-to-shop">
                 <button class="btn btn-outline-black increase">
                   <a  href="/shop">Return to shop </a>
                 </button>
               </p>
-          </div>
-          <cart-items>
-            <table class="table cart taojaa-cart-form__contents {{#ifCond cart.items_count '===' 0}} d-none {{/ifCond}}">
-              <thead>
-                <tr>
-                  <th class="product-thumbnail">Image</th>
-                  <th class="product-name">Product</th>
-                  <th class="product-price">Price</th>
-                  <th class="product-quantity">Quantity</th>
-                  <th class="product-total">Total</th>
-                  <th class="product-remove">Remove</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{#iterate cart.items}}
-                <tr class="taojaa-cart-form__cart-item cart_item">
-                  <td class="product-thumbnail">
-                    <img src="{{current.image}}" alt="Image" class="img-fluid">
-                  </td>
-                  <td class="product-name">
-                    <h2 class="h5 text-black">{{current.title}}
-                      {{current.selected_options_title}}</h2>
-                  </td>
-                  <td> <bdi>
-                    <span class="taojaa-Price-currencySymbol">{{{currency.symbol}}}</span>{{current.sale_price}}
-                </bdi></td>
-                  <td class="product-quantity" data-title="Quantity">
-                    <quantity-field>
-                      <div class="quantity">
-                          <span class="minus ">
-                            <span class=" fw-bold"> - </span>
-                          </span>
-                          <input type="text" id="product__quantity_{{item.id}}" product-data="quantity"
-                          data-line="{{add current.index 1}}"
-                              class="input-text qty text w-50 text-center cart-item__quantity" data-step="{{current.default_or_selected_variant.quantity_rule.step}}" data-min="{{current.default_or_selected_variant.quantity_rule.min}}"
-                              data-max="{{current.default_or_selected_variant.quantity_rule.max}}" name="quantity[]"
-                              value="{{current.quantity}}" title="Qty" inputmode="numeric" />
-                          <span class="plus">
-                            <span class=" fw-bold"> + </span>
-                          </span>
-                      </div>
-                  </quantity-field>
+              </div>
+              <cart-items>
+                <table class="table cart taojaa-cart-form__contents {{#ifCond cart.items_count '===' 0}} d-none {{/ifCond}} main-cart-wrapper">
+                  <thead>
+                    <tr>
+                      <th class="product-thumbnail">Image</th>
+                      <th class="product-name">Product</th>
+                      <th class="product-price">Price</th>
+                      <th class="product-quantity">Quantity</th>
+                      <th class="product-total">Total</th>
+                      <th class="product-remove">Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#iterate cart.items}}
+                    <tr class="taojaa-cart-form__cart-item cart_item" id="cart-item-{{add current.index 1}}">
+                      <td class="product-thumbnail">
+                        <img src="{{current.image}}" alt="Image" class="img-fluid">
+                      </td>
+                      <td class="product-name">
+                        <h2 class="h5 text-black">{{current.title}}
+                          {{current.selected_options_title}}</h2>
+                      </td>
+                      <td> <bdi>
+                        <span class="taojaa-Price-currencySymbol">{{{currency.symbol}}}</span>{{current.sale_price}}
+                    </bdi></td>
+                      <td class="product-quantity" data-title="Quantity">
+                        <quantity-field>
+                          <div class="quantity btn-group rounded-pill bg-black">
+                              <span class="minus px-3">
+                                <span class="text-white fw-bold"> - </span>
+                              </span>
+                              <input type="text" id="product__quantity_{{item.id}}" product-data="quantity"
+                              data-line="{{add current.index 1}}"
+                                  class="input-text qty text w-75 text-center cart-item__quantity" data-step="{{current.default_or_selected_variant.quantity_rule.step}}" data-min="{{current.default_or_selected_variant.quantity_rule.min}}"
+                                  data-max="{{current.default_or_selected_variant.quantity_rule.max}}" name="quantity[]"
+                                  value="{{current.quantity}}" title="Qty" inputmode="numeric" />
+                              <span class="plus px-3 ">
+                                <span class="text-white fw-bold"> + </span>
+                              </span>
+                          </div>
+                      </quantity-field>
 
+                      </td>
+                      <td class="product-subtotal" data-title="Subtotal">
+                      {{{component "loader"}}}
+                      <span class="taojaa-Price-amount amount" id="cart-item__subtotal-{{add current.index 1}}">
+                        {{{component 'cart-item-subtotal' item=current }}}
+                      </span>
                   </td>
-                  <td class="product-subtotal" data-title="Subtotal">
-                  {{{component "loader"}}}
-                  <span class="taojaa-Price-amount amount" id="cart-item__subtotal-{{add current.index 1}}">
-                    {{{component 'cart-item-subtotal' item=current }}}
-                  </span>
-              </td>
-                  <td class="product-remove">
-                    <cart-remove-button>
-                        <a href="/cart/update?line={{add current.index 1}}&quantity=0"
-                            data-line="{{add current.index 1}}" class="remove cart-remove-btn text-danger fw-bold fs-5"
-                            aria-label="Remove current item">×</a>
-                    </cart-remove-button>
-              </td>
-                </tr>
+                      <td class="product-remove">
+                        <cart-remove-button>
+                            <a href="/cart/update?line={{add current.index 1}}&quantity=0"
+                                data-line="{{add current.index 1}}" class="remove cart-remove-btn text-danger fw-bold fs-5"
+                                aria-label="Remove current item">×</a>
+                        </cart-remove-button>
+                  </td>
+                    </tr>
 
-                {{/iterate}}
-              </tbody>
-            </table>
-          </cart-items>
+                    {{/iterate}}
+                  </tbody>
+                </table>
+              </cart-items>
             </div>
           </form>
         </div>
   
-        <div class="row {{#ifCond cart.items_count '===' 0}} d-none {{/ifCond}}">
-          <div class="col-md-6">
+        <div class="row main-cart-wrapper {{#ifCond cart.items_count '===' 0}} d-none {{/ifCond}}" >
+          <div class="col-md-6 main-cart-wrapper">
             <div class="row mb-5">
               <div class="col-md-6">
-                <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
+                <button class="btn btn-outline-black btn-sm btn-block">
+                  <a href="/shop">Continue Shopping</a>
+                </button>
               </div>
             </div>
          
           </div>
 
-          <div class="col-md-6 pl-5">
+          <div class="col-md-6 pl-5 main-cart-wrapper">
             <div class="row justify-content-end">
               <div class="col-md-7">
               <div class="cart-collaterals">
@@ -210,9 +212,10 @@
                 </div>
               </div>
   
-                <div class="row mt-3">
+                <div class="row mt-3 main-cart-wrapper">
                   <div class="col-md-12">
-                    <button class="checkout-button btn btn-black btn-lg py-3 alt"><a href="/checkout" class="wc-forward text-white text-decoration-none">
+                    <button class="checkout-button btn btn-black btn-lg py-3 alt">
+                      <a href="/checkout" class="wc-forward text-white text-decoration-none">
                       Proceed to checkout
                   </a></button>
                   </div>

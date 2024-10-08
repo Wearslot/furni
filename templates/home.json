@@ -6,8 +6,8 @@
 			"widgets": {
 				"heading": {
 					"type": "heading",
-					"tag": "h1",
-					"tag_options": [
+					"heading_size": "h1",
+					"heading_options": [
 						{"label": "Small", "value": "h5"},
 						{"label": "Medium", "value": "h3"},
 						{"label": "Large", "value": "h1"}

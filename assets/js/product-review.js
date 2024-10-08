@@ -28,10 +28,27 @@ if (!customElements.get('review-form')) {
             this.stars = Array.from(this.querySelectorAll('.star')).forEach((star, index) => {
                 star.addEventListener('click', () => this.submitRate(index));
             });
+
+            this.star1s = this.querySelectorAll('.star1');
+            this.star2s = this.querySelectorAll('.star2');
         }
 
         submitRate(index) {
-            return this.rate = index + 1;
+          this.star1s.forEach((star, i) => {
+            if (i <= index) {
+                star.classList.add('d-none');
+            } else {
+              star.classList.remove('d-none');
+            }
+          })
+          this.star2s.forEach((star, i) => {
+            if (i <= index) {
+                star.style.display = "block";
+            } else {
+              star.style.display = "none";
+            }
+          })
+          return this.rate = index + 1;
         }
 
         submitReview(event) {

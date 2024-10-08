@@ -1,5 +1,5 @@
 {
-    "layout": "catalogs",
+    "layout": "main",
     "sections": {
         "catalogs": {
             "type": "shop/four-columns",

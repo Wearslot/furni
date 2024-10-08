@@ -1,0 +1,232 @@
+<!-- Start Hero Section -->
+<div class="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-5">
+        <div class="intro-excerpt">
+          <h1>Cart</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Hero Section -->
+
+
+
+<div class="untree_co-section before-footer-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+              <div
+              class="{{#ifCond cart.items_count '>' 0}} d-none {{/ifCond}} empty-cart">
+              <p class="cart-empty taojaa-info">Your cart is currently empty.</p>
+              <p class="return-to-shop">
+                <button class="btn btn-outline-black increase">
+                  <a  href="/shop">Return to shop </a>
+                </button>
+              </p>
+              </div>
+              <cart-items>
+                <table class="table cart taojaa-cart-form__contents {{#ifCond cart.items_count '===' 0}} d-none {{/ifCond}} main-cart-wrapper">
+                  <thead>
+                    <tr>
+                      <th class="product-thumbnail">Image</th>
+                      <th class="product-name">Product</th>
+                      <th class="product-price">Price</th>
+                      <th class="product-quantity">Quantity</th>
+                      <th class="product-total">Total</th>
+                      <th class="product-remove">Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#iterate cart.items}}
+                    <tr class="taojaa-cart-form__cart-item cart_item" id="cart-item-{{add current.index 1}}">
+                      <td class="product-thumbnail">
+                        <img src="{{current.image}}" alt="Image" class="img-fluid">
+                      </td>
+                      <td class="product-name">
+                        <h2 class="h5 text-black">{{current.title}}
+                          {{current.selected_options_title}}</h2>
+                      </td>
+                      <td> <bdi>
+                        <span class="taojaa-Price-currencySymbol">{{{currency.symbol}}}</span>{{current.sale_price}}
+                    </bdi></td>
+                      <td class="product-quantity" data-title="Quantity">
+                        <quantity-field>
+                          <div class="quantity btn-group rounded-pill bg-black">
+                              <span class="minus px-3">
+                                <span class="text-white fw-bold"> - </span>
+                              </span>
+                              <input type="text" id="product__quantity_{{item.id}}" product-data="quantity"
+                              data-line="{{add current.index 1}}"
+                                  class="input-text qty text w-75 text-center cart-item__quantity" data-step="{{current.default_or_selected_variant.quantity_rule.step}}" data-min="{{current.default_or_selected_variant.quantity_rule.min}}"
+                                  data-max="{{current.default_or_selected_variant.quantity_rule.max}}" name="quantity[]"
+                                  value="{{current.quantity}}" title="Qty" inputmode="numeric" />
+                              <span class="plus px-3 ">
+                                <span class="text-white fw-bold"> + </span>
+                              </span>
+                          </div>
+                      </quantity-field>
+
+                      </td>
+                      <td class="product-subtotal" data-title="Subtotal">
+                      {{{component "loader"}}}
+                      <span class="taojaa-Price-amount amount" id="cart-item__subtotal-{{add current.index 1}}">
+                        {{{component 'cart-item-subtotal' item=current }}}
+                      </span>
+                  </td>
+                      <td class="product-remove">
+                        <cart-remove-button>
+                            <a href="/cart/update?line={{add current.index 1}}&quantity=0"
+                                data-line="{{add current.index 1}}" class="remove cart-remove-btn text-danger fw-bold fs-5"
+                                aria-label="Remove current item">×</a>
+                        </cart-remove-button>
+                  </td>
+                    </tr>
+
+                    {{/iterate}}
+                  </tbody>
+                </table>
+              </cart-items>
+            </div>
+          </form>
+        </div>
+  
+        <div class="row main-cart-wrapper {{#ifCond cart.items_count '===' 0}} d-none {{/ifCond}}" >
+          <div class="col-md-6 main-cart-wrapper">
+            <div class="row mb-5">
+              <div class="col-md-6">
+                <button class="btn btn-outline-black btn-sm btn-block">
+                  <a href="/shop">Continue Shopping</a>
+                </button>
+              </div>
+            </div>
+         
+          </div>
+
+          <div class="col-md-6 pl-5 main-cart-wrapper">
+            <div class="row justify-content-end">
+              <div class="col-md-7">
+              <div class="cart-collaterals">
+                <div class="cart_totals calculated_shipping">
+                    <h2>Cart totals</h2>
+
+                    <table cellspacing="2" class="shop_table shop_table_responsive">
+                        <tbody>
+                            <tr class="cart-subtotal">
+                                <th>Subtotal</th>
+                                <td data-title="Subtotal">
+                                    <span class="taojaa-Price-amount amount cart-subtotal-amount">
+                                        {{{component "cart-subtotal-amount"}}}
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr class="cart-subtotal discount">
+                                <th>Discount</th>
+                                <td data-title="Subtotal">
+                                    <span class="taojaa-Price-amount amount cart-discount-amount">
+                                        {{{component "cart-discount-amount"}}}
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr class="taojaa-shipping-totals shipping">
+                                <th>Shipping</th>
+                                <!-- <td data-title="Shipping">
+                                    <p>Calculate Shipping Fee</p> 
+                                    {{#form "shipping" 'class="taojaa-shipping-calculator"'}}
+                                    <a href="#" class="shipping-calculator-button"><strong>Enter address</strong></a>
+                                    <section class="shipping-calculator-form d-none">
+
+                                        
+                                        <p class="form-row form-row-wide"
+                                            id="calc_shipping_country_field">
+                                            <label for="calc_shipping_country"
+                                                class="screen-reader-text">Country /
+                                                region:</label>
+                                            {{{ country_select_field id="calc_shipping_country"
+                                            class="country_to_state country_select"
+                                            name="calc_shipping_country" }}}
+
+                                        </p>
+
+                                        <p class="form-row form-row-wide"
+                                            id="calc_shipping_state_field">
+                                            <span>
+                                                <label for="calc_shipping_state"
+                                                    class="screen-reader-text">State /
+                                                    County:</label>
+                                                {{{ state_select_field id="calc_shipping_state"
+                                                class="state_select" name="calc_shipping_state" }}}
+                                            </span>
+                                        </p>
+
+                                        <p class="form-row form-row-wide"
+                                            id="calc_shipping_city_field">
+                                            <label for="calc_shipping_city"
+                                                class="screen-reader-text">City:</label>
+                                            <input type="text" class="input-text" value=""
+                                                placeholder="City" name="calc_shipping_city"
+                                                id="calc_shipping_city">
+                                        </p>
+
+                                        <p class="form-row form-row-wide"
+                                            id="calc_shipping_postcode_field">
+                                            <label for="calc_shipping_postcode"
+                                                class="screen-reader-text">Postcode /
+                                                ZIP:</label>
+                                            <input type="text" class="input-text" value=""
+                                                placeholder="Postcode / ZIP"
+                                                name="calc_shipping_postcode"
+                                                id="calc_shipping_postcode">
+                                        </p>
+
+                                        <p><button type="submit" name="calc_shipping" value="1"
+                                                class="button">Update</button></p>
+                                        <input type="hidden" id="taojaa-shipping-calculator-nonce"
+                                            name="taojaa-shipping-calculator-nonce"
+                                            value="f5cc86ed2a"><input type="hidden"
+                                            name="_wp_http_referer" value="/cart/">
+                                    </section>
+                                    {{/form}}
+
+                                </td> -->
+                            </tr>
+
+                            <tr class="order-total">
+                                <th>Total</th>
+                                <td data-title="Total">
+                                    <strong>
+                                        <span class="taojaa-Price-amount amount cart-total-amount">
+                                            {{{component "cart-total-amount"}}}
+                                        </span>
+                                    </strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+              </div>
+  
+                <div class="row mt-3 main-cart-wrapper">
+                  <div class="col-md-12">
+                    <button class="checkout-button btn btn-black btn-lg py-3 alt">
+                      <a href="/checkout" class="wc-forward text-white text-decoration-none">
+                      Proceed to checkout
+                  </a></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script type="text/javascript" src="{{asset_url}}/js/cart.js"></script>
+<script type="text/javascript" src="{{asset_url}}/js/quantity-field.js"></script>
+<script type="text/javascript" src="{{asset_url}}/js/discount.js"></script>

@@ -1,0 +1,29 @@
+<div class="bg-dark" cart-item="{{item.id}}">
+    {{#form "remove-item" item=item}}
+    <button type="submit" class="qodef-e-remove remove remove_from_cart_button"
+        aria-label="Remove this item">
+        <span class="qodef-icon-elegant-icons icon_close button_text"></span>
+        {{{component 'loader'}}}
+    </button>
+    {{/form}}
+    <div class="row">
+      <div class="col-6">
+          <a href="{{url}}"><img width="50" height="50" src="{{item.image}}"
+                  class="attachment-taojaa_thumbnail size-taojaa_thumbnail" alt="f"
+                  ></a>
+      </div>
+      <div class="col-6">
+          <h5 itemprop="name" class="qodef-e-title entry-title">
+              <a href="{{item.url}}">{{item.title}} - {{item.selected_options_title}}</a>
+          </h5>
+          <!-- <span class="quantity">{{item.quantity}} ×
+              <span class="taojaa-Price-amount amount">
+                  <bdi>
+                      <span class="taojaa-Price-currencySymbol">{{{money item.sale_price}}}</span>
+                  </bdi>
+              </span>
+          </span> -->
+      </div>
+
+    </div>
+</div>

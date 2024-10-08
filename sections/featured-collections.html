@@ -1,0 +1,35 @@
+<!-- Start Product Section -->
+<div class="product-section">
+  <div class="container">
+      <div class="row h-100">
+
+        {{#iterate featured_collections}}
+
+        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0 h-100 order-2 order-lg-1">
+            <a class="product-item" href="/collection/{{current.slug}}">
+                <img src="{{current.image}}" class="img-fluid product-thumbnail">
+                <h3 class="product-title">{{current.name}}</h3>
+            </a>
+        </div>
+        {{/iterate }}
+
+          <!-- Start Column 1 -->
+          <div class="col-12 col-md-5 mb-5 mb-md-0 offset-lg-1 order-1 order-lg-1">
+            {{#widgets section.widgets}}
+            {{#ifCond widget.type '==' 'featured_collections_title'}}
+                <{{widget.tag}}>{{widget.settings.text}}</{{widget.tag}}>
+            {{/ifCond}}
+            {{#ifCond widget.type '==' 'featured_collections_description'}}
+                <{{widget.tag}}>{{widget.settings.text}}</{{widget.tag}}>
+            {{/ifCond}}
+          {{/widgets}}
+          </div>
+          <!-- End Column 1 -->
+
+      
+
+
+      </div>
+  </div>
+</div>
+<!-- End Product Section -->

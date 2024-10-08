@@ -1,81 +1,157 @@
 {
-    "layout": "main",
-    "sections": {
-        "hero": {
-            "type": "home-hero",
-            "widgets": {
-                "heading": {
-                    "type": "heading",
-                    "tag": "h2",
-                    "settings": {
-                        "text": "How are your doing today?"
-                    }
-                },
-                "navigation": {
-                    "type": "navigation",
-                    "handle": "header_menu",
-                    "settings": {}
-                }
-            }
-        },
-        "featured-products": {
-            "type": "featured-products",
-            "settings": {
-                "padding_top": 10,
-                "title": "Best selling products",
-                "subtitle": "CUSTOMER FAVORITES",
-                "description": ""
-            }
-        },
-        "why-choose-us": {
-            "type": "home-about",
-            "settings": {
-                "padding_top": 10,
-                "title": "Best selling products",
-                "subtitle": "CUSTOMER FAVORITES",
-                "description": ""
-            }
-        },
-        "our-services": {
-            "type": "home-services",
-            "settings": {
-                "padding_top": 10,
-                "title": "Best selling products",
-                "subtitle": "CUSTOMER FAVORITES",
-                "description": ""
-            }
-        },
-        "featured-collections": {
-            "type": "featured-collections",
-            "settings": {
-                "title": "Simple elegance",
-                "subtitle": "SUMMER COLLECTION",
-                "description": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta."
-            }
-        },
-        "lastest-blog-posts": {
-            "type": "lastest-blog-posts",
-            "settings": {
-                "title": "Simple elegance",
-                "subtitle": "SUMMER COLLECTION",
-                "description": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta."
-            }
-        }
-    },
-    "order": [
-        "hero",
-        "featured-products",
-        "why-choose-us",
-        "our-services",
-        "featured-collections"
-    ],
-    "data": {
-        "products": {
-            "pagination": {
-                "per_page": 10
-            }
-        },
-        "featured_products": true,
-        "featured_collections": true
-    }
+	"layout": "main",
+	"sections": {
+		"hero": {
+			"type": "home-hero",
+			"widgets": {
+				"heading": {
+					"type": "heading",
+					"tag": "h1",
+					"tag_options": [
+						{"label": "Small", "value": "h5"},
+						{"label": "Medium", "value": "h3"},
+						{"label": "Large", "value": "h1"}
+					],
+					"settings": {
+						"text": "Furniture that lasts forever"
+					}
+				},
+				"heading-paragraph": {
+					"type": "heading-paragraph",
+					"tag": "p",
+					"settings": {
+						"text": "This is funiture you must have..."
+					}
+				},
+				"navigation": {
+					"type": "navigation",
+					"handle": "header_menu",
+					"settings": {}
+				},
+				"hero_image": {
+					"type": "hero_image",
+					"tag": "img",
+					"settings": {
+						"image": "https://res.cloudinary.com/daisikwbm/image/upload/v1727954574/couch_whi7jm.png"
+					}
+				}
+			}
+		},
+		"featured-products": {
+			"type": "featured-products",
+			"widgets": {
+				"product-tag": {
+					"type": "product-tag",
+					"tag": "h3",
+					"settings": {
+						"text": "NEW ARRIVALS"
+					}
+				},
+				"product-description": {
+					"type": "product-description",
+					"tag": "p",
+					"settings": {
+						"text": "Buy amazing products"
+					}
+				}
+			}
+		},
+		"why-choose-us": {
+			"type": "home-about",
+			"widgets": {
+				"why-choose-us": {
+					"type": "why-choose-us",
+					"tag": "h3",
+					"settings": {
+						"text": "Why choose our products?"
+					}
+				},
+				"why-description": {
+					"type": "why-description",
+					"tag": "p",
+					"settings": {
+						"text": "Buy amazing products... Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique"
+					}
+				},
+				"why-image": {
+					"type": "why-image",
+					"tag": "img",
+					"settings": {
+						"image": "https://res.cloudinary.com/daisikwbm/image/upload/v1727954640/why-choose-us-img_pbrlve.jpg"
+					}
+				}
+			}
+		},
+		"our-services": {
+			"type": "home-services",
+			"widgets": {
+				"our-services-title": {
+					"type": "our-services-title",
+					"tag": "h2",
+					"settings": {
+						"text": "We Help You Make Modern Interior Design"
+					}
+				},
+				"our-services-description": {
+					"type": "our-services-description",
+					"tag": "p",
+					"settings": {
+						"text": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada.Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada"
+					}
+				},
+				"our-services-image": {
+					"type": "our-services-image",
+					"tag": "img",
+					"settings": {
+						"image_1": "https://res.cloudinary.com/daisikwbm/image/upload/v1727954562/img-grid-1_qeo43y.jpg",
+						"image_2": "https://res.cloudinary.com/daisikwbm/image/upload/v1727954561/img-grid-2_li1g7t.jpg",
+						"image_3": "https://res.cloudinary.com/daisikwbm/image/upload/v1727954561/img-grid-3_wzrls0.jpg"
+					}
+				}
+			}
+		},
+		"featured-collections": {
+			"type": "featured-collections",
+			"widgets": {
+				"featured_collections_title": {
+					"type": "featured_collections_title",
+					"tag": "h2",
+					"settings": {
+						"text": "Explore Featured Collections"
+					}
+				},
+				"featured_collections_description": {
+					"type": "featured_collections_description",
+					"tag": "p",
+					"settings": {
+						"text": "Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique"
+					}
+				}
+			}
+		},
+		"lastest-blog-posts": {
+			"type": "lastest-blog-posts",
+			"settings": {
+				"title": "Simple elegance",
+				"subtitle": "SUMMER COLLECTION",
+				"description": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta."
+			}
+		}
+	},
+	"order": [
+		"hero",
+		"featured-products",
+		"featured-collections",
+		"why-choose-us",
+		"our-services"
+	],
+	"data": {
+		"products": {
+			"pagination": {
+				"per_page": 10
+			}
+		},
+		"featured_products": true,
+		"featured_collections": true
+	}
 }

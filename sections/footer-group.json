@@ -1,11 +1,25 @@
 {
-    "sections": {
-        "footer": {
-            "type": "footer",
-            "settings": {}
-        }
-    },
-    "order": [
-        "footer"
-    ]
+	"sections": {
+		"footer": {
+			"type": "footer",
+			"settings": {},
+			"widgets": {
+				"footer": {
+					"type": "footer",
+					"tag": "p",
+					"settings": {
+						"text": "This is funiture you must have...Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant"
+					}
+				},
+				"footer_image": {
+					"type": "footer_image",
+					"tag": "img",
+					"settings": {
+						"image": "https://res.cloudinary.com/daisikwbm/image/upload/v1727954626/sofa_kp6eni.png"
+					}
+				}
+			}
+		}
+	},
+	"order": ["footer"]
 }

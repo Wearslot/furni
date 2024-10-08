@@ -1,5 +1,5 @@
 {
-    "layout": "",
+    "layout": "main",
     "sections": {
         "order-placed": {
             "type": "checkout-completed",

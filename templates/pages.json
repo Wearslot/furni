@@ -1,5 +1,5 @@
 {
-    "layout": "",
+    "layout": "main",
     "sections": {
         "main-page": {
             "type": "page"

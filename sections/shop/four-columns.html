@@ -1,0 +1,47 @@
+<div class="hero">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="">
+        <h1>{{#ifCond collection '!=' null}} {{collection.name}} {{/ifCond}}</h1>
+        <h1>{{#ifCond collection '==' null}} Shop {{/ifCond}}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Hero Section -->
+
+
+
+<div class="untree_co-section product-section before-footer-section">
+  <div class="container">
+    <div class="row">
+      {{#iterate products}}
+      <div class="col-12 col-md-4 col-lg-3 mb-5">
+        <a class="product-item" href="/product/{{current.slug}}" >
+          <img src="{{current.image.main}}" class="img-fluid product-thumbnail">
+          <h3 class="product-title">{{current.name}}</h3>
+          <strong class="product-price">{{{product_price current}}}</strong>
+          <p>
+            {{#ifCond current.discount '>' 0}}<span class="">Sale</span> {{/ifCond}}
+          </p>
+          <p>{{#ifCond current.collection '!=' null}}
+            <a href="/collections/{{current.collection.slug}}"
+                rel="tag">{{current.collection.name}}</a>
+            {{/ifCond}}
+          </p>
+          <span class="icon-cross d-flex align-items-center justify-content-center quick-view-btn" data-slug="{{current.slug}}">
+            <i class="fa-solid fa-plus" style="color: aliceblue;" data-slug="{{current.slug}}">
+          
+          </i>
+          </span>
+        </a>
+      </div>
+      {{/iterate}}
+
+
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="{{asset_url}}/js/quick-view.js"></script>

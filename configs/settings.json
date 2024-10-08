@@ -12,6 +12,10 @@
             "description": {
                 "type": "text",
                 "value": "get 15% off"
+            },
+            "modal_footer": {
+                "type": "text",
+                "value": "Don't miss out! Subscribe to our newsletter and be the first to hear about new updates, special promotions, and exclusive content. Join our community today!"
             } 
         },
         "footer": {

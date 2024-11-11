@@ -6,12 +6,7 @@
 			"widgets": {
 				"heading": {
 					"type": "heading",
-					"heading_size": "h1",
-					"heading_options": [
-						{"label": "Small", "value": "h5"},
-						{"label": "Medium", "value": "h3"},
-						{"label": "Large", "value": "h1"}
-					],
+					"tag": "h1",
 					"settings": {
 						"text": "Furniture that lasts forever"
 					}

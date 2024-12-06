@@ -142,9 +142,7 @@
 	],
 	"data": {
 		"products": {
-			"pagination": {
-				"per_page": 10
-			}
+			"per_page": 10
 		},
 		"featured_products": true,
 		"featured_collections": true

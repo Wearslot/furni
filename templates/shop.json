@@ -2,16 +2,7 @@
     "layout": "main",
     "sections": {
         "catalogs": {
-            "type": "shop/four-columns",
-            "available_types": [
-                "shop/four-columns",
-                "shop/three-columns",
-                "shop/two-columns",
-                "shop/left-side",
-                "shop/right-side",
-                "shop/alternating-list",
-                "shop/gallery"
-            ],
+            "type": "catalog",
             "settings": {}
         }
     },
